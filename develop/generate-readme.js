@@ -3,59 +3,70 @@ const fs = require('fs');
 const generateReadme = data => {
 
     const title = data.title.length > 0 ? data.title : 'Project Title';
-    const projectDescription = data.description.length > 0 ? data.description : 'Project Description';
-    const installationInstructions = data.installation.length > 0 ? data.installation : 'Installation Instructions';
-    const usageInformation = data.usage.length > 0 ? data.usage : 'Usage Information';
-    const contributionInformation = data.contribution.length > 0 ? data.contribution : 'Contribution Information';
-    const testInformation = data.test.length > 0 ? data.test : 'Test Information';
-    const license = data.license.length > 0 ? data.license[0] : 'Licence Information';
-    const github = data.github.length > 0 ? data.github : 'GitHub Profile';
-    const email = data.email.length > 0 ? data.email : 'User Email Address';
+
+    const projectDescription = {
+        data: data.description.length > 0 ? data.description : null,
+        contentHeader: '[Project Description](##project-description)'
+    };
+
+    const installationInstructions = {
+        data: data.installation.length > 0 ? data.installation : null,
+        contentHeader: '[Installation Instructions](##installation-instructions)',
+    };
+
+    const usageInformation = {
+        data: data.usage.length > 0 ? data.usage : null,
+        contentHeader: '[Usage Information](##usage-information)'
+    };
+    const contributionInformation = {
+        data: data.contribution.length > 0 ? data.contribution : null,
+        contentHeader: '[Contribution Information](##contribution-information)'
+    };
+    const testInformation = {
+        data: data.test.length > 0 ? data.test : null,
+        contentHeader: '[Test Information](##test-information)'
+    };
+    const license = {
+        data: data.license.length > 0 ? data.license[0] : null,
+        contentHeader: '[License](##license)'
+    };
+    const githubProfile = {
+        data: data.github.length > 0 ? data.github : null,
+        contentHeader: '[GitHub Profile](##github-profile)'
+    };
+    const emailAddress = {
+        data: data.email.length > 0 ? data.email : null,
+        contentHeader: '[Email Address](##email-address)'
+    };
+
+    const contents = [projectDescription, installationInstructions, usageInformation, contributionInformation, testInformation, license, githubProfile, emailAddress]
+    const filteredContents = contents.filter(elem => elem.data !== null);
+
+    let contentsTable = '';
+    let contentNum = 1;
+
+    let readmeBody = ''
+
+    filteredContents.forEach(contentsItem => {
+        contentsTable += `${contentNum}. ${contentsItem.contentHeader}\n`;
+        contentNum++;
+
+        let subHead = `## ${contentsItem.contentHeader.split(']')[0].replace('[', '')}\n`;
+        let sectionText = contentsItem.data;
+
+        readmeBody += `${subHead}\n${sectionText}\n\n`
+    })
+
 
     const readmeString = `# ${title}
         
 ## Contents
 
-1. [Project Description](##project-description)
-2. [Installation Instructions](##installation-instructions)
-3. [Usage Information](##usage-information)
-4. [Contribution Information](##contribution-information)
-5. [Test Information](##test-information)
-6. [License](##license)
-7. [GitHub Profile](##github-profile)
-8. [Email Address](##email-address)
+${contentsTable}
 
-## Project Description
+${readmeBody}
 
-${projectDescription}
-
-## Installation Instructions
-
-${installationInstructions}
-
-## Usage Information
-
-${usageInformation}
-
-## Contribution Information
-
-${contributionInformation}
-
-## Test Information
-
-${testInformation}
-
-## License
-
-${license}
-
-## Github Profile
-
-${github}
-
-## Email Address
-
-${email}`
+`
 
     fs.writeFile('README.md', readmeString, err => err ? console.error(err) : console.log('Readme.md Succesfully generated!'))
 }
