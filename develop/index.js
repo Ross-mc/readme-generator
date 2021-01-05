@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
+const generateReadme = require('./generate-readme')
 
 const licenseImagesURLS = {
     'Creative Commons': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Cc.logo.circle.svg/1200px-Cc.logo.circle.svg.png',
@@ -47,8 +47,24 @@ const prompts = [
         message: 'Please select from the following licenses: ',
         choices: licenses
     },
+    {
+        name: 'github',
+        type: 'input',
+        message: 'Please enter your GitHub username: ',
+    },
+    {
+        name: 'email',
+        type: 'input',
+        message: 'Please enter your email address',
+    }
 ];
 
-inquirer
+const init = () => {
+    inquirer
     .prompt(prompts)
-    .then(answers => console.log(answers))
+    .then(answers => generateReadme(answers))
+}
+
+init();
+
+
