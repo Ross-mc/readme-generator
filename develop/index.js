@@ -1,14 +1,7 @@
 const inquirer = require('inquirer');
 const generateReadme = require('./generate-readme')
 
-const licenseImagesURLS = {
-    'Creative Commons': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Cc.logo.circle.svg/1200px-Cc.logo.circle.svg.png',
-    'MIT': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1200px-MIT_logo.svg.png',
-    'ISC': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/%28ISC%29%C2%B2_logo_%28vectorized%29.svg/640px-%28ISC%29%C2%B2_logo_%28vectorized%29.svg.png',
-    'GNU General Public License': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/GPLv3_Logo.svg/1200px-GPLv3_Logo.svg.png'
-};
-
-const licenses = Object.keys(licenseImagesURLS);
+const licenses = ['Creative Commons', 'MIT', 'ISC', 'GNU General Public License']
 
 const prompts = [
     {
