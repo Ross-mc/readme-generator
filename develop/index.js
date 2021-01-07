@@ -1,8 +1,10 @@
 const inquirer = require('inquirer');
 const generateReadme = require('./generate-readme')
 
+//Available license. More licenses can simply be added to the array if requiured
 const licenses = ['Creative Commons', 'MIT', 'ISC', 'GNU General Public License']
 
+//questions to provide to inquirer
 const prompts = [
     {
         name: 'title',
@@ -34,7 +36,7 @@ const prompts = [
         type: 'input',
         message: 'Please enter testing instructions: '
     },
-    {
+    {//type of list accepts an additional prop called choices which should be an array of choices
         name: 'license',
         type: 'list',
         message: 'Please select from the following licenses: ',
