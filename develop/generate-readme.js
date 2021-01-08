@@ -70,7 +70,7 @@ const generateReadme = data => {
     let licenseIMG = `\n`;
 
     if (filteredContents.includes(license)){
-        licenseIM;G = `![${license.data} Image](${licenseImagesURLS[license.data]})`;
+        licenseIMG = `![${license.data} Image](${licenseImagesURLS[license.data]})`;
     }
 
     //github and email is to be add to a separate section entitled Questions;
