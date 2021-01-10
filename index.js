@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const generateReadme = require('./generate-readme')
+const generateReadme = require('./utils/generate-readme')
 
 //Available license. More licenses can simply be added to the array if requiured
 const licenses = ['Creative Commons', 'MIT', 'ISC', 'GNU General Public License']
