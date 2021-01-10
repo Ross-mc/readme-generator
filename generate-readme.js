@@ -107,7 +107,7 @@ ${questionsText}
 
 `;
 
-    fs.writeFile('README.md', readmeString, err => err ? console.error(err) : console.log('Readme.md Succesfully generated!'));
+    fs.writeFile('generatedREADME.md', readmeString, err => err ? console.error(err) : console.log('Readme.md Succesfully generated!'));
 }
 
 module.exports = generateReadme;
