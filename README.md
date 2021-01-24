@@ -6,7 +6,7 @@
 2. [Installation Instructions](##installation-instructions)
 3. [Usage Information](##usage-information)
 4. [License](##license)
-5. [Questions](##questions]
+5. [Questions](##questions)
 
 
 ## Project Description
